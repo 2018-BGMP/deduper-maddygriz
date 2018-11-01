@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#SBATCH --partition=short											
+#SBATCH --job-name=deduper							
+#SBATCH --output=/projects/bgmp/maddyg/Bi624/deduper/files/deduper.out	
+#SBATCH --error=/projects/bgmp/maddyg/Bi624/deduper/files/deduper.err	
+#SBATCH --time=0-00:10:00											
+#SBATCH --nodes=1													
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=14										
+#SBATCH --mail-user=maddyg@uoregon.edu 								
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+
+FILE1="/home/maddyg/624/deduper/realFiles/Dataset1_sorted.sam"
+FILE2="/home/maddyg/624/deduper/realFiles/Dataset2_sorted.sam"
+FILE3="/home/maddyg/624/deduper/realFiles/Dataset3_sorted.sam"
+FILE4="/home/maddyg/624/deduper/realFiles/paired_end_sorted.sam"
+UMIS="/home/maddyg/624/deduper/STL96.txt"
+
+cd ~/python/Bi624
+
+/usr/bin/time -v ./griswold_deduper.py -f $FILE1 -u $UMIS
+/usr/bin/time -v ./griswold_deduper.py -f $FILE2 -u $UMIS
+/usr/bin/time -v ./griswold_deduper.py -f $FILE3 -u $UMIS
+/usr/bin/time -v ./griswold_deduper.py -f $FILE4 -u $UMIS -p
