@@ -175,9 +175,10 @@ else:
 	
 			
 if args.paired:
-	pairedEnd = True
+	print("Program cannot support paired-end files")
+	import sys
+	sys.exit()
 else:
-	pairedEnd = False
 	print("Continuing as single end reads")
 	
 			
@@ -201,11 +202,8 @@ with open(args.file, "r") as fh:
 					unique = {}
 				UMI = getUMI(line)
 				if (UMI_list == True and UMI in UMIs) or UMI_list == False:
-					if pairedEnd == True:
-						if reverseStrand(line) == True:
-							position = adjustPosForward(line)
-						else:
-							position = adjustPosForward(line)
+					if reverseStrand(line) == True:
+						position = adjustPosForward(line)
 					else:
 						position = adjustPosForward(line)
 					identifier = UMI + str(position)
