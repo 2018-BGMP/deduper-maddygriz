@@ -12,7 +12,7 @@ import gzip
 #******************************************************************************* 
 
 def get_arguments():
-	parser = argparse.ArgumentParser (description = "dedupe reads in a sam file")
+	parser = argparse.ArgumentParser (description = "dedupe reads in a sam file, sam file must be sorted before using this program")
 	parser.add_argument("-f", "--file", help="full absolute path to sam file to dedupe ", required=True, type=str)
 	parser.add_argument("-p", "--paired", help="is the file paried end??", required=False, action='store_true')
 	parser.add_argument("-u", "--umi", help="file containing UMIs used in your reads", required=False, type=str)
