@@ -1,0 +1,11 @@
+Dataset1 total lines with headerlines: 1013204
+Dataset1 after deduping total lines with headerlines: 636009
+
+Dataset2 total lines with headerlines: 1382133
+Dataset2 after deduping total lines with headerlines: 744212
+
+Dataset2 total lines with headerlines: 5721174
+Dataset2 after deduping total lines with headerlines: 4052943
+
+paired_end total lines with headerlines: 100056
+paired_end after deduping total lines with headerlines: 97478

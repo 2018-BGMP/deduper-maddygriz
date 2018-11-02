@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#SBATCH --partition=short											
+#SBATCH --job-name=sort							
+#SBATCH --output=/projects/bgmp/maddyg/Bi624/deduper/files/sort.out	
+#SBATCH --error=/projects/bgmp/maddyg/Bi624/deduper/files/sort.err	
+#SBATCH --time=0-00:10:00											
+#SBATCH --nodes=1													
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=10										
+#SBATCH --mail-user=maddyg@uoregon.edu 								
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+FILE1="/home/maddyg/624/deduper/realFiles/Dataset1.sam"
+FILE2="/home/maddyg/624/deduper/realFiles/Dataset2.sam"
+FILE3="/home/maddyg/624/deduper/realFiles/Dataset3.sam"
+FILE4="/home/maddyg/624/deduper/realFiles/paired_end.sam"
+
+OUTPUT1="/home/maddyg/624/deduper/realFiles/Dataset1_sorted.sam"
+OUTPUT2="/home/maddyg/624/deduper/realFiles/Dataset2_sorted.sam"
+OUTPUT3="/home/maddyg/624/deduper/realFiles/Dataset3_sorted.sam"
+OUTPUT4="/home/maddyg/624/deduper/realFiles/paired_end_sorted.sam"
+
+
+ml samtools	
+	
+/usr/bin/time -v samtools view -bS $FILE1 | samtools sort -O sam -o $OUTPUT1
+/usr/bin/time -v samtools view -bS $FILE2 | samtools sort -O sam -o $OUTPUT2
+/usr/bin/time -v samtools view -bS $FILE3 | samtools sort -O sam -o $OUTPUT3
+/usr/bin/time -v samtools view -bS $FILE4 | samtools sort -O sam -o $OUTPUT4
